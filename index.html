@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        background-image: linear-gradient( to right, #2c85a7, #7eda8d );
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .btnMain {
+        gap: 10px;
+        width: 30%;
+        text-align: center;
+      }
+      #btn1,
+      #btn2 {
+        padding: 10px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        color: white;
+        border: none;
+        background: linear-gradient( to right, #2c85a7, #7eda8d );
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      #btn1 {
+        margin-right: 20px;
+      }
+
+      #btn2 {
+        margin-left: 20px;
+      }
+
+      #btn1:hover,
+      #btn2:hover {
+        background: linear-gradient( to right, #2c85a7, #7eda8d );
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      #btn1:active,
+      #btn2:active {
+        transform: translateY(1px);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+      }
+      .btnMain h2 {
+        text-align: center;
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #050505;
+        background: linear-gradient(45deg, #070606, #0c0b0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .btnMain h2:hover {
+        transform: scale(1.05);
+      }
+      .btnMain .para1 {
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        color: #050505;
+        background: linear-gradient(45deg, #070606, #0c0b0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .btnMain .para1:hover {
+        transform: scale(1.05);
+      }
+
+      @media screen and (min-width: 530px) and (max-width: 905px) {
+        .btnMain {
+          width: 70%;
+        }
+      }
+      @media screen and (min-width: 230px) and (max-width: 529px) {
+        .btnMain {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="btnMain">
+        <button id="btn1">#2c85a7</button>
+        <button id="btn2"> #7eda8d</button>
+        <br />
+        <h2>Click and copy</h2>
+        <br />
+        <div class="para1">
+          background-image: linear-gradient( to right, #ddf8dc, #56b04f );
+        </div>
+      </div>
+    </div>
+    <script>
+      let btn1 = document.getElementById("btn1");
+      let btn2 = document.getElementById("btn2");
+      let para = document.querySelector(".para1");
+      let btnColor1 = "#23F3AB";
+      let btnColor2 = "#0aF1AB";
+
+      para.addEventListener("click", () => {
+        navigator.clipboard.writeText(para.innerHTML);
+      });
+
+      const handleBtn = () => {
+        let haxavalue = "0123456789abcdef";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color = color + haxavalue[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+
+      const handleBtn1 = () => {
+        btnColor1 = handleBtn();
+        document.body.style.backgroundImage = `linear-gradient( to right, ${btnColor1}, ${btnColor2} )`;
+        para.innerHTML = `linear-gradient( to right, ${btnColor1}, ${btnColor2} )`;
+        btn1.innerHTML = `${btnColor1}`;
+        btn1.style.background = btnColor1;
+        para1.style.color = btnColor1;
+    };
+    const handleBtn2 = () => {
+        btnColor2 = handleBtn();
+        console.log(btnColor2);
+        document.body.style.backgroundImage = `linear-gradient( to right, ${btnColor1}, ${btnColor2} )`;
+        para.innerHTML = `linear-gradient( to right, ${btnColor1}, ${btnColor2} )`;
+        btn2.innerHTML = `${btnColor2}`;
+        btn2.style.background = btnColor2;
+        para2.style.color = btnColor2;
+      };
+
+      btn1.addEventListener("click", handleBtn1);
+      btn2.addEventListener("click", handleBtn2);
+    </script>
+  </body>
+</html>
